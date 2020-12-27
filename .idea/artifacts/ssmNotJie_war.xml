@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ssmNotJie:war">
+    <output-path>$PROJECT_DIR$/ssmNotJie/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ssmNotJie</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="aid-platform.war">
+      <element id="artifact" artifact-name="ssmNotJie:war exploded" />
+    </root>
+  </artifact>
+</component>
