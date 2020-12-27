@@ -1,5 +1,6 @@
 package Jie.bag.config;
 
+import com.github.pagehelper.PageInterceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -10,6 +11,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 /**
  * ♥--?
  * ♥O Copyright (C) JIe
@@ -59,6 +61,13 @@ public class DataSourceClassConfig {
      public SqlSessionFactory sessionFactory() throws Exception {
          SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
          factoryBean.setDataSource(dataSource());
+         PageInterceptor pageInterceptor = new PageInterceptor();
+         Properties props = new Properties();
+         props.setProperty("helperDialect", "mysql");
+         props.setProperty("supportMethodsArguments", "true");
+         props.setProperty("rowBoundsWithCount", "true");
+         pageInterceptor.setProperties(props);
+         factoryBean.setPlugins(new PageInterceptor[]{pageInterceptor});
          return factoryBean.getObject();
      }
 }
