@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
  * -♥---J
  */
 @SuppressWarnings("all")
+/**spring 组件 交给 spring 管*/
 @Component
 public class SpringClassConfig implements ApplicationContextAware {
     private static ApplicationContext applicationContext;

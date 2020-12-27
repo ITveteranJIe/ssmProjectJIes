@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
  * -♥---J
  */
 @SuppressWarnings("all")
+/** 数值越小 越先加载*/
 @Order(1)
 public class WebXClassConfig implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {

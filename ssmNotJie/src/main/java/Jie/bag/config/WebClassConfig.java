@@ -16,7 +16,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * -♥---J
  */
 @SuppressWarnings("all")
+/**扫描 Jie.bag 下面的注解*/
 @ComponentScan(basePackages = {"Jie.bag"})
+/**是使用Java 注解快捷配置Spring Webmvc的一个注解*/
 @EnableWebMvc
 public class WebClassConfig extends WebMvcConfigurerAdapter {
 
@@ -26,6 +28,7 @@ public class WebClassConfig extends WebMvcConfigurerAdapter {
         validatorFactoryBean.setProviderClass(HibernateValidator.class);
         return validatorFactoryBean;
     }
+    /**视图解析方法*/
     @Bean
     public InternalResourceViewResolver viewResolver(){
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
