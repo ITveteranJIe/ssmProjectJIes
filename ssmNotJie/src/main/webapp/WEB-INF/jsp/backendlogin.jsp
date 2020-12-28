@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,10 +38,10 @@
               <div>
                 <input type="text" class="form-control" name="userCode" placeholder="请输入用户名" required="" />
               </div>
+              <p style="color: red">${error}</p>
               <div>
                 <input type="password" class="form-control" name="userPassword" placeholder="请输入密码" required="" />
               </div>
-              <span>${error }</span>
               <div>
               	<button type="submit" class="btn btn-success">登     录</button>
               	<button type="reset" class="btn btn-default">重　填</button>

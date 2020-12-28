@@ -16,6 +16,11 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("all")
 public interface MapperQJ {
     /**手游后台管理系统登录*/
-    @Select("select * from backend_user where userCode=#{userCode} and userPassword=#{userPassword}")
+//    @Select("select * from backend_user where userCode=#{userCode} and userPassword=#{userPassword}")
+    @Select("SELECT * FROM backend_user  INNER  JOIN data_dictionary  ON backend_user.id=data_dictionary.id\n" +
+            "WHERE userCode=#{userCode} AND  userPassword=#{userPassword}")
+    @Results(value = {
+            @Result(column ="valueName",property = "userTypeName" ,id=true)
+    })
     BackendUser selectBylogin(@Param("userCode") String userCode,@Param("userPassword") String userPassword);
 }

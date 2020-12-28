@@ -36,6 +36,10 @@ public class QueenController {
     @RequestMapping("/manager/dologin")
     public String dologin(Model model, HttpSession session,String userCode,String userPassword){
         BackendUser backendUser = serviceQ.selectBylogin(userCode, userPassword);
+        if(backendUser==null){
+            model.addAttribute("error","账号或密码错误");
+            return "backendlogin";
+        }
         session.setAttribute("userSession",backendUser);
 //        model.addAttribute("userSession1",backendUser);
         logger.info("进来了");
