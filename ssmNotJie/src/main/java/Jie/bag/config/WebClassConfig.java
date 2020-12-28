@@ -1,7 +1,11 @@
 package Jie.bag.config;
+import Jie.bag.Hand.HandleIntercepttorClassConfig;
 import org.hibernate.validator.HibernateValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.format.FormatterRegistry;
+import org.springframework.format.datetime.DateFormatter;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -38,14 +42,25 @@ public class WebClassConfig extends WebMvcConfigurerAdapter {
         viewResolver.setExposeContextBeansAsAttributes(true);
         return viewResolver;
     }
-
+    @Autowired
+    private HandleIntercepttorClassConfig handleIntercepttorClassConfig;
+    /**配置拦截器*/
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        super.addInterceptors(registry);
+       registry.addInterceptor(handleIntercepttorClassConfig)
+               .addPathPatterns("/**") // 拦截所有路径/backend/**","/developer/**
+               .excludePathPatterns("/resources/**","/statics/**","/403.jsp","/index.jsp",
+                       "/WEB-INF/jsp/backendlogin.jsp","/WEB-INF/jsp/devlogin.jsp","/WEB-INF/jsp/error.jsp"); // 不拦截请求资源
     }
-
+    /**允许资源过滤*/
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/statics/**").addResourceLocations("/statics/");
     }
+    /**配置日期*/
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+       registry.addFormatter(new DateFormatter("yyyy-MM-dd"));
+    }
+
 }
