@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @SuppressWarnings("all")
 @Controller
 public class FrontController {
+    /**手游开发者平台 */
     @RequestMapping("dev/login")
     public String login(Model model){
         return "devlogin";
