@@ -41,8 +41,18 @@ public class QueenController {
             return "backendlogin";
         }
         session.setAttribute("userSession",backendUser);
-//        model.addAttribute("userSession1",backendUser);
         logger.info("进来了");
         return "backend/main";
+    }
+    /**后台管理退出登录*/
+    @RequestMapping("/manager/logout")
+    public String tolout(HttpSession session){
+        session.removeAttribute("userSession");
+        return "backendlogin";
+    }
+    /**手游审核*/
+    @RequestMapping("/manager/backend/app/list")
+    public String list(){
+        return "backend/applist";
     }
 }

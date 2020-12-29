@@ -23,4 +23,7 @@ public interface MapperQJ {
             @Result(column ="valueName",property = "userTypeName" ,id=true)
     })
     BackendUser selectBylogin(@Param("userCode") String userCode,@Param("userPassword") String userPassword);
+
+    /**手游管理【申】*/
+    
 }

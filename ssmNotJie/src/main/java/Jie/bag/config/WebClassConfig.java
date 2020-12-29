@@ -48,7 +48,7 @@ public class WebClassConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
        registry.addInterceptor(handleIntercepttorClassConfig)
-               .addPathPatterns("/**") // 拦截所有路径/backend/**","/developer/**
+               .addPathPatterns("/WEB-INF/jsp/backend/**") // 拦截所有路径/backend/**","/developer/**
                .excludePathPatterns("/resources/**","/statics/**","/403.jsp","/index.jsp",
                        "/WEB-INF/jsp/backendlogin.jsp","/WEB-INF/jsp/devlogin.jsp","/WEB-INF/jsp/error.jsp"); // 不拦截请求资源
     }

@@ -6,6 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * ♥--?
@@ -17,7 +18,13 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class HandleIntercepttorClassConfig implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+
         System.out.println("-----------方法前------------");
+        HttpSession session = httpServletRequest.getSession();
+        if(session.getAttribute("userSession")!=null){
+            httpServletRequest.setAttribute("mess","你还没有登录 请登录");
+           return true;
+        }
         return true;
     }
 
